@@ -1,0 +1,14 @@
+---
+# tasks file for webserver
+- name: "Installing httpd"
+  package:
+     name: "httpd"
+     state: present
+- name: "copy the content"
+  copy:
+     src: "/root/kll.php"
+     dest: /var/www/html/
+- name: "restart httpd"
+  service:
+     name: "httpd"
+     state: started

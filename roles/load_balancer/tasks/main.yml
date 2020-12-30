@@ -1,0 +1,16 @@
+---
+# tasks file for load_balancer
+
+- name: "Installing Haproxy"
+  package:
+    name: "haproxy"
+    state: present
+- name: "copying the Haproxy file"
+  template:
+    src: "/root/ansible/haproxy/haproxy.cfg"
+    dest: /etc/haproxy/
+  notify: Load_balacer restart
+- name: "restart haproxy"
+  service:
+    name: "haproxy"
+    state: "started"
